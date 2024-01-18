@@ -103,8 +103,6 @@ const GalleryView: React.FC = () => {
           </div>
         </div>
       </div>
-
-      {/** For  */}
     </>
   );
 };
