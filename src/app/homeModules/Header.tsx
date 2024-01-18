@@ -81,6 +81,7 @@ const Header: React.FC = () => {
               viewBox="0 0 24 24"
               stroke="currentColor"
               strokeWidth={2}
+              style={{ marginTop: -11 }}
             >
               <path
                 strokeLinecap="round"
@@ -89,7 +90,7 @@ const Header: React.FC = () => {
               />
             </svg>
           ) : (
-            <CollapseIcon />
+            <CollapseIcon style={{ marginTop: -6, marginLeft: -10 }} />
           )}
         </IconButton>
       </div>
@@ -115,7 +116,7 @@ const Header: React.FC = () => {
 
   return (
     <>
-      <div className="h-max w-full fixed" style={{ zIndex: 9 }}>
+      <div className="h-max w-full fixed -mt-28 bg-white" style={{ zIndex: 9 }}>
         <div className="bg-armyGreen lg:px-8 px-2 py-4 lg:flex md:flex hidden gap-10 justify-between">
           <div className="flex gap-6">
             <div className="flex gap-2">

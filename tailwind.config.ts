@@ -13,6 +13,7 @@ const config: Config = {
         secondaryGrey: "#737373",
         primaryBlue: "#23A6F0",
         meshBlack: "#252B42",
+        successGreen: "#2DC071",
       },
     },
   },
