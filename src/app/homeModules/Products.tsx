@@ -1,17 +1,26 @@
 "use client";
 
 import { useGetProductsListingQuery } from "@/services";
-import { useDispatch } from "react-redux";
-import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useMemo } from "react";
 import { SET_PRODUCTS } from "@/reducers/productsDataSlice";
+import Loader from "@/components/Loader";
+import { RootState } from "@/store";
+import ProductsList from "./ProductsList";
 
 const Products: React.FC = () => {
-  const { data, error, loading } = useGetProductsListingQuery<any>("");
+  const products = useSelector(
+    (state: RootState) => state.productsData.products
+  );
+
+  const { data, error, isLoading } = useGetProductsListingQuery<any>("");
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(SET_PRODUCTS(data?.products));
-  }, [loading]);
+  }, [data, dispatch]);
+
+  console.log(products);
 
   return (
     <>
@@ -30,8 +39,8 @@ const Products: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-full flex flex-row flex-wrap p-3">
-          {loading ? <div className="custom-loader" /> : null}
+        <div className="w-full flex flex-row flex-wrap px-3 py-20 items-center gap-x-1 gap-y-10 justify-between">
+          {isLoading ? <Loader /> : <ProductsList products={products} />}
         </div>
       </div>
     </>
