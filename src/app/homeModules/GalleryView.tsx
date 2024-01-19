@@ -1,11 +1,8 @@
-"use client";
-
 import Image from "next/image";
 
 const GalleryView: React.FC = () => {
   return (
     <>
-      {/*** For LARGE DEVICES */}
       <div className="lg:py-20 md:py-20 py-5 lg:px-24 px-4 w-full h-auto flex">
         <div className="flex lg:flex-row flex-col w-full lg:h-[626px] gap-5 lg:gap-2 md:gap-2">
           <div className="lg:w-1/3 w-full flex">

@@ -1,10 +1,13 @@
-import type { Metadata } from "next";
+"use client";
+
 import { Montserrat } from "next/font/google";
+import { Provider } from "react-redux";
 import "./globals.css";
+import store from "@/store";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
+const metadata: { title: string; description: string } = {
   title: "Bandage",
   description: "An e-commerce application",
 };
@@ -16,7 +19,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <title>{metadata.title}</title>
+      <body className={inter.className}>
+        <Provider store={store}>{children}</Provider>
+      </body>
     </html>
   );
 }
