@@ -2,25 +2,41 @@
 
 import { useGetProductsListingQuery } from "@/services";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { SET_PRODUCTS } from "@/reducers/productsDataSlice";
 import Loader from "@/components/Loader";
 import { RootState } from "@/store";
 import ProductsList from "./ProductsList";
+import { Button } from "@material-tailwind/react";
 
 const Products: React.FC = () => {
+  const [itemsPerPage] = useState<number>(20);
+  const [pageNo, setPageNo] = useState<number>(0);
+
   const products = useSelector(
     (state: RootState) => state.productsData.products
   );
 
-  const { data, error, isLoading } = useGetProductsListingQuery<any>("");
+  const { data, error, isLoading } = useGetProductsListingQuery<any>({
+    skip: `${pageNo * itemsPerPage}`,
+    limit: `${itemsPerPage}`,
+  });
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(SET_PRODUCTS(data?.products));
-  }, [data, dispatch]);
+    /**
+     * Check if our products state on redux store has data
+     * If not (for first page), we display products fetched from our API
+     * If yes (pagination activated), we concatenate previous state data with new products
+     * fetched from our API
+     */
+    const productsData = products
+      ? products.concat(data?.products)
+      : data?.products;
 
-  console.log(products);
+    // dispatch our products data to the store
+    dispatch(SET_PRODUCTS(productsData));
+  }, [data, dispatch]);
 
   return (
     <>
@@ -40,7 +56,25 @@ const Products: React.FC = () => {
         </div>
 
         <div className="w-full flex flex-row flex-wrap px-3 py-20 items-center gap-x-1 gap-y-10 justify-between">
-          {isLoading ? <Loader /> : <ProductsList products={products} />}
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <ProductsList products={products} />{" "}
+              {products?.length === data?.total ? null : (
+                <div className="w-full my-8 flex justify-center">
+                  <Button
+                    variant="outlined"
+                    placeholder=""
+                    className="uppercase text-primaryBlue border rounded-md border-primaryBlue"
+                    onClick={() => setPageNo(pageNo + 1)}
+                  >
+                    Load More Products
+                  </Button>
+                </div>
+              )}
+            </>
+          )}
         </div>
       </div>
     </>

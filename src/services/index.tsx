@@ -9,7 +9,13 @@ export const productsApi = createApi({
   }),
   endpoints: (builder: any) => ({
     getProductsListing: builder.query({
-      query: () => `/products`,
+      query: (arg: any) => {
+        const { skip, limit } = arg;
+        return {
+          url: "products",
+          params: { skip, limit },
+        };
+      },
     }),
   }),
 });
