@@ -42,23 +42,23 @@ const ProductsList: React.FC<ProductsListProp> = ({ products }) => {
           </div>
           <div
             className="w-full py-5 flex flex-col gap-4"
-            title={product.title}
+            title={product?.title}
           >
             <span className="text-base font-bold text-center whitespace-nowrap overflow-ellipsis overflow-hidden text-meshBlack">
-              {product.title}
+              {product?.title}
             </span>
             <span className="text-sm font-bold flex justify-center text-center text-secondaryGrey">
-              {product.brand}
+              {product?.brand}
             </span>
             <span className="text-base font-bold flex justify-center gap-2">
               <span className="flex line-through text-primaryGrey">
-                ${product.price}
+                ${product?.price}
               </span>
               <span className="flex text-armyGreen">
                 $
                 {calculateDiscountPrice(
-                  product.price,
-                  product.discountPercentage
+                  product?.price,
+                  product?.discountPercentage
                 )}
               </span>
             </span>

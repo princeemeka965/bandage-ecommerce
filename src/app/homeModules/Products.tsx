@@ -25,18 +25,19 @@ const Products: React.FC = () => {
 
   useEffect(() => {
     /**
-     * Check if our products state on redux store has data
-     * If not (for first page), we display products fetched from our API
-     * If yes (pagination activated), we concatenate previous state data with new products
+     * Check if pageNo state value is 0
+     * If yes (first page), we display products fetched from our API
+     * If no (pagination activated), we concatenate previous state data with new products
      * fetched from our API
      */
-    const productsData = products
-      ? products.concat(data?.products)
-      : data?.products;
+    const productsData =
+      pageNo > 0 ? products.concat(data?.products) : data?.products;
 
     // dispatch our products data to the store
     dispatch(SET_PRODUCTS(productsData));
   }, [data, dispatch]);
+
+  console.log(products);
 
   return (
     <>
@@ -60,8 +61,9 @@ const Products: React.FC = () => {
             <Loader />
           ) : (
             <>
-              <ProductsList products={products} />{" "}
-              {products?.length === data?.total ? null : (
+              {products ? (
+                <ProductsList products={products} />
+              ) : products?.length === data?.total ? null : (
                 <div className="w-full my-8 flex justify-center">
                   <Button
                     variant="outlined"
