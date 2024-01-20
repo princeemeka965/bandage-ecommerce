@@ -285,3 +285,52 @@ export const CaretBlack = (props: any): ReactNode => (
     />
   </svg>
 );
+
+export const BookMarkIcon = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={72}
+    height={72}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#23A6F0"
+      d="M6 24v34.587S19.863 58.071 36 66c16.137-7.929 30-7.413 30-7.413V24s-16.362 0-30 7.413C22.362 24 6 24 6 24ZM36 24a9 9 0 1 0 0-18 9 9 0 0 0 0 18Z"
+    />
+  </svg>
+);
+
+export const Book = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={72}
+    height={72}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#23A6F0"
+      d="M42.75 22.5H58.5V27H42.75v-4.5ZM42.75 33.75H58.5v4.5H42.75v-4.5ZM42.75 45H58.5v4.5H42.75V45ZM13.5 22.5h15.75V27H13.5v-4.5ZM13.5 33.75h15.75v4.5H13.5v-4.5ZM13.5 45h15.75v4.5H13.5V45Z"
+    />
+    <path
+      fill="#23A6F0"
+      d="M63 11.25H9a4.505 4.505 0 0 0-4.5 4.5v40.5a4.505 4.505 0 0 0 4.5 4.5h54a4.505 4.505 0 0 0 4.5-4.5v-40.5a4.505 4.505 0 0 0-4.5-4.5Zm-54 4.5h24.75v40.5H9v-40.5Zm29.25 40.5v-40.5H63v40.5H38.25Z"
+    />
+  </svg>
+);
+
+export const SignalGrowth = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={72}
+    height={72}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#23A6F0"
+      d="M65.76 19.86a3 3 0 0 0-1.62-1.62A3 3 0 0 0 63 18H48a3 3 0 0 0 0 6h7.77L39 40.77l-9.87-9.9a3 3 0 0 0-4.26 0l-18 18a3 3 0 0 0 0 4.26 3 3 0 0 0 4.26 0L27 37.23l9.87 9.9a3 3 0 0 0 4.26 0L60 28.23V36a3 3 0 1 0 6 0V21a3.002 3.002 0 0 0-.24-1.14Z"
+    />
+  </svg>
+);

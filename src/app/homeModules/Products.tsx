@@ -43,8 +43,8 @@ const Products: React.FC = () => {
     <>
       <div className="lg:py-20 md:py-20 py-5 lg:px-24 px-4 w-full h-auto flex flex-col">
         <div className="w-full flex justify-center">
-          <div className="w-3/5 flex flex-col gap-3">
-            <span className="text-xl text-center text-secondaryGrey">
+          <div className="lg:w-3/5 md:w-3/5 w-4/5 flex flex-col gap-3">
+            <span className="text-xl text-center lg:flex md:flex hidden text-secondaryGrey">
               Featured Products
             </span>
             <span className="text-2xl font-bold text-center text-meshBlack uppercase">
