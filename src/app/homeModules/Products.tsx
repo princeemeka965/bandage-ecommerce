@@ -2,7 +2,7 @@
 
 import { useGetProductsListingQuery } from "@/services";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { SET_PRODUCTS } from "@/reducers/productsDataSlice";
 import Loader from "@/components/Loader";
 import { RootState } from "@/store";

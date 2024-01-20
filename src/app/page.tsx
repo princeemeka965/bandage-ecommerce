@@ -1,4 +1,5 @@
 import BlogPosts from "./homeModules/BlogPosts";
+import CallToAction from "./homeModules/CallToAction";
 import GalleryView from "./homeModules/GalleryView";
 import Header from "./homeModules/Header";
 import Products from "./homeModules/Products";
@@ -16,6 +17,7 @@ export default function Home() {
         <BlogPosts />
         <Testimonials />
       </div>
+      <CallToAction />
     </>
   );
 }
