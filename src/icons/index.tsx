@@ -334,3 +334,64 @@ export const SignalGrowth = (props: any): ReactNode => (
     />
   </svg>
 );
+
+export const ClockIcon = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={17}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <path
+      fill="#23A6F0"
+      d="M8.5 14.667a6.08 6.08 0 0 1-6-6 6.08 6.08 0 0 1 6-6 6.08 6.08 0 0 1 6 6 6.08 6.08 0 0 1-6 6ZM8.5 4a4.73 4.73 0 0 0-4.667 4.667 4.73 4.73 0 0 0 4.666 4.666 4.73 4.73 0 0 0 4.667-4.666A4.73 4.73 0 0 0 8.499 4Zm3.333 5.333h-4v-4h1.333V8h2.667v1.333Zm2.194-4.861-2.006-2 .94-.945 2.006 2-.94.944v.001Zm-11.056 0-.944-.945 1.994-2 .944.945-1.993 2h-.001Z"
+    />
+  </svg>
+);
+
+export const BarChart = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={17}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <g clipPath="url(#a)">
+      <path
+        fill="#23856D"
+        d="M16.333 13.833H2v-13a.167.167 0 0 0-.167-.166H.667A.167.167 0 0 0 .5.833v14.334c0 .091.075.166.167.166h15.666a.167.167 0 0 0 .167-.166V14a.167.167 0 0 0-.167-.167ZM3.5 12.5h11.167a.167.167 0 0 0 .166-.167V3.25a.167.167 0 0 0-.285-.119l-4.381 4.382-2.613-2.584a.167.167 0 0 0-.235 0L3.38 8.88a.164.164 0 0 0-.048.117v3.337c0 .092.075.167.167.167Z"
+      />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M.5.667h16v14.667H.5z" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+export const ChevronRight = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={10}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <g clipPath="url(#a)">
+      <path
+        fill="#23A6F0"
+        fillRule="evenodd"
+        d="M.68.18a.615.615 0 0 1 .872 0l7.384 7.385a.615.615 0 0 1 0 .87L1.552 15.82a.616.616 0 0 1-.871-.872L7.63 8 .68 1.052a.615.615 0 0 1 0-.871Z"
+        clipRule="evenodd"
+      />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M.5 0h9v16h-9z" />
+      </clipPath>
+    </defs>
+  </svg>
+);

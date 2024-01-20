@@ -37,8 +37,6 @@ const Products: React.FC = () => {
     dispatch(SET_PRODUCTS(productsData));
   }, [data, dispatch]);
 
-  console.log(products);
-
   return (
     <>
       <div className="lg:py-20 md:py-20 py-5 lg:px-24 px-4 w-full h-auto flex flex-col">

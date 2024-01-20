@@ -1,3 +1,4 @@
+import BlogPosts from "./homeModules/BlogPosts";
 import GalleryView from "./homeModules/GalleryView";
 import Header from "./homeModules/Header";
 import Products from "./homeModules/Products";
@@ -11,6 +12,7 @@ export default function Home() {
         <GalleryView />
         <Products />
         <ServicesView />
+        <BlogPosts />
       </div>
     </>
   );

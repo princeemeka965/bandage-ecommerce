@@ -15,6 +15,8 @@ const config: Config = {
         meshBlack: "#252B42",
         successGreen: "#2DC071",
         primaryGrey: "#BDBDBD",
+        dangerRed: "#E74040",
+        disabledBlue: "#8EC2F2",
       },
     },
   },
