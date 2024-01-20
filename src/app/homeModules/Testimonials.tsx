@@ -18,8 +18,8 @@ const Testimonials: React.FC = () => {
 
   return (
     <>
-      <div className="lg:py-8 md:py-20 py-5 lg:px-24 px-4 w-full h-auto flex flex-col">
-        <div className="flex p-12 justify-between gap-20 items-center">
+      <div className="lg:py-8 md:py-20 py-5 lg:px-24 w-full h-auto flex flex-col">
+        <div className="flex lg:flex-row md:flex-row flex-col lg:p-12 p-5 justify-between gap-20 items-center">
           <div className="flex flex-col gap-7 lg:w-1/2 w-full">
             <span className="text-2xl text-center text-meshBlack font-bold">
               What they say about us
@@ -56,9 +56,12 @@ const Testimonials: React.FC = () => {
           </div>
 
           {/** Imgae Gallery */}
-          <div className="flex lg:w-2/4 w-full gap-3 flex-wrap">
+          <div className="flex lg:w-2/4 w-full lg:gap-3 md:gap-3 gap-1 flex-wrap">
             {images.map((image, index) => (
-              <div className="w-[31%] h-[143px] relative" key={index}>
+              <div
+                className="lg:w-[31%] md:w-[31%] w-[32%] lg:h-[143px] h-[112px] relative"
+                key={index}
+              >
                 <Image
                   alt="gallery"
                   src={image}
