@@ -1,3 +1,4 @@
+import Footer from "@/components/Footer";
 import BlogPosts from "./homeModules/BlogPosts";
 import CallToAction from "./homeModules/CallToAction";
 import GalleryView from "./homeModules/GalleryView";
@@ -18,6 +19,7 @@ export default function Home() {
         <Testimonials />
       </div>
       <CallToAction />
+      <Footer />
     </>
   );
 }

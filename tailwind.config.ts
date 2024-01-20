@@ -17,6 +17,7 @@ const config: Config = {
         primaryGrey: "#BDBDBD",
         dangerRed: "#E74040",
         disabledBlue: "#8EC2F2",
+        lightGray: "#FAFAFA",
       },
     },
   },
