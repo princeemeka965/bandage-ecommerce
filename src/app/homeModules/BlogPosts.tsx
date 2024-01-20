@@ -38,7 +38,7 @@ const BlogPosts: React.FC = () => {
             <div className="flex lg:w-1/3 md:w-1/3 w-full flex-col" key={index}>
               <div className="w-full h-[300px] relative">
                 <Image
-                  alt="MusicBG"
+                  alt="blog-cover"
                   src={item.image}
                   priority
                   quality={100}
