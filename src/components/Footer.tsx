@@ -107,6 +107,7 @@ const Footer: React.FC = () => {
                     className: "min-w-0",
                   }}
                   crossOrigin=""
+                  readOnly
                 />
                 <Button
                   size="sm"

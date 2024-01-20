@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface ProductsObject {
   id: number;
@@ -40,29 +41,31 @@ const ProductsList: React.FC<ProductsListProp> = ({ products }) => {
               alt="product_logo"
             />
           </div>
-          <div
-            className="w-full py-5 flex flex-col gap-4"
-            title={product?.title}
-          >
-            <span className="text-base font-bold text-center whitespace-nowrap overflow-ellipsis overflow-hidden text-meshBlack">
-              {product?.title}
-            </span>
-            <span className="text-sm font-bold flex justify-center text-center text-secondaryGrey">
-              {product?.brand}
-            </span>
-            <span className="text-base font-bold flex justify-center gap-2">
-              <span className="flex line-through text-primaryGrey">
-                ${product?.price}
+          <Link href={`/product/${product?.id}`}>
+            <div
+              className="w-full py-5 flex flex-col gap-4"
+              title={product?.title}
+            >
+              <span className="text-base font-bold text-center whitespace-nowrap overflow-ellipsis overflow-hidden text-meshBlack">
+                {product?.title}
               </span>
-              <span className="flex text-armyGreen">
-                $
-                {calculateDiscountPrice(
-                  product?.price,
-                  product?.discountPercentage
-                )}
+              <span className="text-sm font-bold flex justify-center text-center text-secondaryGrey">
+                {product?.brand}
               </span>
-            </span>
-          </div>
+              <span className="text-base font-bold flex justify-center gap-2">
+                <span className="flex line-through text-primaryGrey">
+                  ${product?.price}
+                </span>
+                <span className="flex text-armyGreen">
+                  $
+                  {calculateDiscountPrice(
+                    product?.price,
+                    product?.discountPercentage
+                  )}
+                </span>
+              </span>
+            </div>
+          </Link>
         </div>
       ))}
     </>
