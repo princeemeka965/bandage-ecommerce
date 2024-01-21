@@ -33,7 +33,7 @@ const ProductCarouselView: React.FC = () => {
 
           <div className="w-full flex lg:flex-row md:flex-row flex-col lg:h-[594px] gap-8 lg:px-0 px-4">
             <Card
-              className="lg:w-2/4 w-full lg:h-[450px] h-[277px] flex flex-col"
+              className="lg:w-2/4 w-full lg:h-[450px] h-[277px] bg-transparent flex flex-col"
               placeholder={null}
             >
               <Carousel
@@ -62,7 +62,7 @@ const ProductCarouselView: React.FC = () => {
                     alt="image 1"
                     width={2000}
                     height={2000}
-                    className="h-full w-full object-contain"
+                    className="h-full w-full object-cover"
                   />
                 ))}
               </Carousel>
