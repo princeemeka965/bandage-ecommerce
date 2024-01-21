@@ -36,7 +36,7 @@ export default function ProductPage() {
             <div className="lg:px-48 px-2 flex flex-col bg-lightGray gap-3">
               <ProductCarouselView />
             </div>
-            <div className="bg-lightGray">
+            <div className="bg-lightGray lg:flex md:flex hidden">
               <Products productDetailsPage={true} />
             </div>
           </>
