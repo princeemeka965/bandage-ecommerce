@@ -202,7 +202,7 @@ export const SearchIconXs = (props: any): ReactNode => (
   >
     <g clipPath="url(#a)">
       <path
-        fill="#252B42"
+        fill={`${props.fill ? props.fill : "#252B42"}`}
         fillRule="evenodd"
         d="m17.19 15.478 6.456 6.456a1.21 1.21 0 1 1-1.713 1.711l-6.455-6.456a9.6 9.6 0 1 1 1.71-1.71h.002ZM9.6 16.8A7.2 7.2 0 1 0 9.6 2.4a7.2 7.2 0 0 0 0 14.4Z"
         clipRule="evenodd"
@@ -224,7 +224,7 @@ export const CartIconXs = (props: any): ReactNode => (
     fill="none"
     {...props}
   >
-    <g fill="#252B42" clipPath="url(#a)">
+    <g fill={`${props.fill ? props.fill : "#252B42"}`} clipPath="url(#a)">
       <path d="M8 22.4a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM19.2 22.4a1.6 1.6 0 1 0 0-3.2 1.6 1.6 0 0 0 0 3.2ZM22.4 4H4.656L4 .64A.8.8 0 0 0 3.2 0H0v1.6h2.544L5.6 16.96a.8.8 0 0 0 .8.64h14.4V16H7.056L6.4 12.8h14.4a.8.8 0 0 0 .8-.624l1.6-7.2A.8.8 0 0 0 22.4 4Zm-2.24 7.2H6.096l-1.12-5.6H21.4l-1.24 5.6Z" />
     </g>
     <defs>
@@ -272,6 +272,28 @@ export const WishIcon = (props: any): ReactNode => (
   </svg>
 );
 
+export const WishIconXs = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={30}
+    height={29}
+    fill="none"
+    {...props}
+  >
+    <g clipPath="url(#a)">
+      <path
+        fill="#23A6F0"
+        d="m15 4.98-1.3-1.335C10.65.509 5.056 1.591 3.037 5.534c-.948 1.854-1.161 4.53.57 7.948 1.667 3.29 5.136 7.23 11.393 11.521 6.257-4.291 9.724-8.232 11.393-11.521 1.731-3.419 1.52-6.094.57-7.948-2.02-3.943-7.613-5.026-10.664-1.89L15 4.98Zm0 22.208C-12.791 8.823 6.443-5.51 14.68 2.072c.11.1.216.203.32.31.102-.107.209-.21.319-.308 8.236-7.588 27.472 6.748-.32 25.114Z"
+      />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M.5 0h29v29H.5z" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
 export const Avatar = (props: any): ReactNode => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
@@ -289,6 +311,28 @@ export const Avatar = (props: any): ReactNode => (
     <defs>
       <clipPath id="a">
         <path fill="#fff" d="M0 0h12v12H0z" />
+      </clipPath>
+    </defs>
+  </svg>
+);
+
+export const AvatarXs = (props: any): ReactNode => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={27}
+    height={29}
+    fill="none"
+    {...props}
+  >
+    <g clipPath="url(#a)">
+      <path
+        fill="#23A6F0"
+        d="M13.5 14.5a6.63 6.63 0 0 0 4.773-2.05A7.134 7.134 0 0 0 20.25 7.5a7.134 7.134 0 0 0-1.977-4.95A6.63 6.63 0 0 0 13.5.5a6.63 6.63 0 0 0-4.773 2.05A7.134 7.134 0 0 0 6.75 7.5c0 1.857.711 3.637 1.977 4.95A6.63 6.63 0 0 0 13.5 14.5Zm4.5-7a4.756 4.756 0 0 1-1.318 3.3 4.42 4.42 0 0 1-3.182 1.367 4.42 4.42 0 0 1-3.182-1.367A4.756 4.756 0 0 1 9 7.5c0-1.238.474-2.425 1.318-3.3A4.42 4.42 0 0 1 13.5 2.833 4.42 4.42 0 0 1 16.682 4.2 4.756 4.756 0 0 1 18 7.5Zm9 18.667c0 2.333-2.25 2.333-2.25 2.333H2.25S0 28.5 0 26.167c0-2.334 2.25-9.334 13.5-9.334s13.5 7 13.5 9.334Zm-2.25-.01c-.002-.574-.346-2.3-1.872-3.882-1.467-1.522-4.228-3.108-9.378-3.108-5.152 0-7.911 1.586-9.378 3.108-1.526 1.582-1.867 3.308-1.872 3.882h22.5Z"
+      />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M0 .5h27v28H0z" />
       </clipPath>
     </defs>
   </svg>

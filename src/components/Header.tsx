@@ -2,6 +2,7 @@
 
 import {
   Avatar,
+  AvatarXs,
   CaretBlack,
   CartIconLg,
   CartIconXs,
@@ -14,12 +15,19 @@ import {
   SearchIconXs,
   TwitterIcon,
   WishIcon,
+  WishIconXs,
   YouTubeIcon,
 } from "@/icons";
 import { Navbar, IconButton, Collapse } from "@material-tailwind/react";
 import { useState } from "react";
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  productDetailsPage: boolean;
+}
+
+const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
+  // productDetailsPage prop is true if user is viewing from product details page
+
   const [openNav, setOpenNav] = useState<boolean>(false);
 
   const navPageLists = (
@@ -48,11 +56,17 @@ const Header: React.FC = () => {
           Login / Register
         </span>
       </div>
-      <div className="flex">
+      <div
+        className={`lg:flex md:flex ${productDetailsPage ? "hidden" : "flex"}`}
+      >
         <SearchIconXs className="lg:hidden md:hidden" />
         <SearchIconLg className="lg:block md:block hidden" />
       </div>
-      <div className="flex gap-1">
+      <div
+        className={`lg:flex md:flex gap-1 ${
+          productDetailsPage ? "hidden" : "flex"
+        }`}
+      >
         <CartIconXs className="lg:hidden md:hidden" />
         <CartIconLg className="lg:block md:block hidden" />
         <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
@@ -111,22 +125,52 @@ const Header: React.FC = () => {
       <div className="flex w-full justify-center p-2">
         <span className="text-2xl text-secondaryGrey">Contact</span>
       </div>
+      {productDetailsPage ? (
+        <>
+          <div className="flex w-full justify-center gap-2 p-2">
+            <span className="flex flex-col justify-center">
+              <AvatarXs />
+            </span>
+            <span className="text-2xl text-primaryBlue">Login / Register</span>
+          </div>
+          <div className="flex w-full justify-center gap-2 p-2">
+            <SearchIconXs fill="#23A6F0" />
+          </div>
+          <div className="flex w-full justify-center gap-2 p-2">
+            <CartIconXs fill="#23A6F0" />
+            <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
+              1
+            </span>
+          </div>
+          <div className="flex w-full justify-center gap-2 p-2">
+            <WishIconXs />
+            <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
+              1
+            </span>
+          </div>
+        </>
+      ) : null}
     </ul>
   );
 
   return (
     <>
-      <div
-        className="h-max w-full fixed -mt-28 bg-white"
-        style={{ zIndex: 9999 }}
-      >
-        <div className="bg-armyGreen lg:px-8 px-2 py-4 lg:flex md:flex hidden gap-10 justify-between">
+      <div className="h-max w-full fixed bg-white" style={{ zIndex: 9999 }}>
+        <div
+          className={`bg-armyGreen ${
+            productDetailsPage ? "lg:px-48 md:px-48" : "lg:px-8"
+          } px-2 py-4 lg:flex md:flex hidden gap-10 justify-between`}
+        >
           <div className="flex gap-6">
             <div className="flex gap-2">
               <div className="flex flex-col justify-center">
                 <PhoneIcon />
               </div>
-              <span className="text-sm text-white font-bold">
+              <span
+                className={`text-sm text-white ${
+                  productDetailsPage ? "font-normal" : "font-bold"
+                }`}
+              >
                 (225) 555-0118
               </span>
             </div>
@@ -134,7 +178,11 @@ const Header: React.FC = () => {
               <div className="flex flex-col justify-center">
                 <MailIcon />
               </div>
-              <span className="text-sm text-white font-bold">
+              <span
+                className={`text-sm text-white ${
+                  productDetailsPage ? "font-normal" : "font-bold"
+                }`}
+              >
                 michelle.rivera@example.com
               </span>
             </div>
@@ -165,7 +213,9 @@ const Header: React.FC = () => {
 
         <div className="flex w-full">
           <Navbar
-            className="sticky top-0 z-10 h-max max-w-full rounded-none border-none lg:px-8 md:px-8 px-6 py-3"
+            className={`sticky top-0 z-10 h-max max-w-full rounded-none border-none ${
+              productDetailsPage ? "lg:px-48 md:px-48" : "lg:px-8 md:px-8"
+            } px-6 py-3`}
             placeholder={undefined}
           >
             <div className="flex items-center justify-between">
