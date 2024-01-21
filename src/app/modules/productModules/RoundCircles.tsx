@@ -1,5 +1,4 @@
 export default function RoundCircles({ circles }: any) {
-  console.log(circles);
   return (
     <>
       {circles.map((circle: { bgColor: string }, index: number) => (

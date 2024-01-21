@@ -1,5 +1,5 @@
 "use client";
-import RoundCircles from "@/components/RoundCircles";
+import RoundCircles from "@/app/modules/productModules/RoundCircles";
 import { CartIconLg, ChevronRight, EyeIcon, WishIcon } from "@/icons";
 import { RootState } from "@/store";
 import { Button, Card, Carousel, Rating } from "@material-tailwind/react";

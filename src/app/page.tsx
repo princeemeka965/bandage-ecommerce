@@ -1,11 +1,11 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Products from "@/components/Products";
-import BlogPosts from "./homeModules/BlogPosts";
-import CallToAction from "./homeModules/CallToAction";
-import GalleryView from "./homeModules/GalleryView";
-import ServicesView from "./homeModules/ServicesView";
-import Testimonials from "./homeModules/Testimonials";
+import BlogPosts from "./modules/homeModules/BlogPosts";
+import CallToAction from "./modules/homeModules/CallToAction";
+import GalleryView from "./modules/homeModules/GalleryView";
+import ServicesView from "./modules/homeModules/ServicesView";
+import Testimonials from "./modules/homeModules/Testimonials";
 
 export default function Home() {
   return (

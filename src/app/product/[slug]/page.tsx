@@ -3,15 +3,15 @@
 import { useParams } from "next/navigation";
 import { useGetSingleProductListingQuery } from "@/services";
 import Header from "@/components/Header";
-import ProductCarouselView from "./productModules/ProductCarouselView";
+import ProductCarouselView from "../../modules/productModules/ProductCarouselView";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { SET_SINGLE_PRODUCT } from "@/reducers/productsDataSlice";
 import Loader from "@/components/Loader";
 import Products from "@/components/Products";
 import Footer from "@/components/Footer";
-import ProductDescriptionView from "./productModules/ProductDescriptionView";
-import BrandsView from "./productModules/BrandsView";
+import ProductDescriptionView from "../../modules/productModules/ProductDescriptionView";
+import BrandsView from "../../modules/productModules/BrandsView";
 
 export default function ProductPage() {
   const params = useParams<{ slug: string }>();
