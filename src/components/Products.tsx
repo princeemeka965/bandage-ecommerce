@@ -9,7 +9,19 @@ import { RootState } from "@/store";
 import ProductsList from "./ProductsList";
 import { Button } from "@material-tailwind/react";
 
-const Products: React.FC = () => {
+interface ProductsProps {
+  productDetailsPage: boolean;
+}
+
+const Products: React.FC<ProductsProps> = ({ productDetailsPage }) => {
+  // productDetailsPage prop is true if user is viewing from product details page not the home page
+
+  /**
+   * If productDetailsPage prop is true,
+   * we hide the Load More Products button, here by disabling pagination.
+   * we also change display of contents and make style changes
+   */
+
   const [itemsPerPage] = useState<number>(20);
   const [pageNo, setPageNo] = useState<number>(0);
   const [paginateLoader, setLoader] = useState<boolean>(false);
@@ -22,6 +34,7 @@ const Products: React.FC = () => {
     skip: `${pageNo * itemsPerPage}`,
     limit: `${itemsPerPage}`,
   });
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -49,20 +62,32 @@ const Products: React.FC = () => {
 
   return (
     <>
-      <div className="lg:py-20 md:py-20 py-5 lg:px-24 px-4 w-full h-auto flex flex-col">
-        <div className="w-full flex justify-center">
-          <div className="lg:w-3/5 md:w-3/5 w-4/5 flex flex-col gap-3">
-            <span className="text-xl text-center justify-center lg:flex md:flex hidden text-secondaryGrey">
-              Featured Products
-            </span>
-            <span className="text-2xl font-bold text-center text-meshBlack uppercase">
+      <div
+        className={`lg:py-20 md:py-20 py-5 ${
+          productDetailsPage ? "lg:px-48 md:px-48" : "lg-px-24 md:px-24"
+        } px-4 w-full h-auto flex flex-col`}
+      >
+        {productDetailsPage ? (
+          <div className="w-full flex border-b-2">
+            <span className="text-2xl font-bold my-3 text-meshBlack uppercase">
               BESTSELLER PRODUCTS
             </span>
-            <span className="text-sm text-secondaryGrey text-center">
-              Problems trying to resolve the conflict between
-            </span>
           </div>
-        </div>
+        ) : (
+          <div className="w-full flex justify-center">
+            <div className="lg:w-3/5 md:w-3/5 w-4/5 flex flex-col gap-3">
+              <span className="text-xl text-center justify-center lg:flex md:flex hidden text-secondaryGrey">
+                Featured Products
+              </span>
+              <span className="text-2xl font-bold text-center text-meshBlack uppercase">
+                BESTSELLER PRODUCTS
+              </span>
+              <span className="text-sm text-secondaryGrey text-center">
+                Problems trying to resolve the conflict between
+              </span>
+            </div>
+          </div>
+        )}
 
         <div className="w-full flex flex-row flex-wrap px-3 py-20 items-center gap-x-1 gap-y-10 justify-between">
           {isLoading ? (
@@ -73,7 +98,7 @@ const Products: React.FC = () => {
           ) : (
             <>
               {products ? <ProductsList products={products} /> : null}
-              {products?.length === data?.total ? null : (
+              {products?.length === data?.total || productDetailsPage ? null : (
                 <div className="w-full my-8 flex justify-center">
                   {paginateLoader ? (
                     <Loader size="xs" />

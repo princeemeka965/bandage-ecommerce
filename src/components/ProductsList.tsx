@@ -1,3 +1,4 @@
+import { Card } from "@material-tailwind/react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -28,7 +29,7 @@ const ProductsList: React.FC<ProductsListProp> = ({ products }) => {
     <>
       {products?.map((product, index) => (
         <div className="lg:w-1/6 md:w-1/5 w-full flex flex-col" key={index}>
-          <div className="w-full h-[238px] relative">
+          <div className="w-full h-[238px] relative border">
             <Image
               src={product?.thumbnail || ""}
               width={183}
@@ -42,8 +43,9 @@ const ProductsList: React.FC<ProductsListProp> = ({ products }) => {
             />
           </div>
           <Link href={`/product/${product?.id}`}>
-            <div
-              className="w-full py-5 flex flex-col gap-4"
+            <Card
+              placeholder={undefined}
+              className="w-full py-5 flex px-6 flex-col rounded-none gap-4"
               title={product?.title}
             >
               <span className="text-base font-bold text-center whitespace-nowrap overflow-ellipsis overflow-hidden text-meshBlack">
@@ -64,7 +66,7 @@ const ProductsList: React.FC<ProductsListProp> = ({ products }) => {
                   )}
                 </span>
               </span>
-            </div>
+            </Card>
           </Link>
         </div>
       ))}
