@@ -1,12 +1,6 @@
 "use client";
 import RoundCircles from "@/components/RoundCircles";
-import {
-  CartIconLg,
-  CartIconXs,
-  ChevronRight,
-  EyeIcon,
-  WishIcon,
-} from "@/icons";
+import { CartIconLg, ChevronRight, EyeIcon, WishIcon } from "@/icons";
 import { RootState } from "@/store";
 import { Button, Card, Carousel, Rating } from "@material-tailwind/react";
 import Image from "next/image";
@@ -22,18 +16,24 @@ const ProductCarouselView: React.FC = () => {
       {product ? (
         <>
           <div className="flex flex-col py-6 w-full">
-            <div className="flex justify-center lg:justify-start gap-4 md:justify-start">
-              <span className="text-sm font-bold text-meshBlack">Home</span>
+            <div className="flex justify-center lg:justify-start gap-4 lg:h-[44px] md:justify-start">
+              <span className="flex flex-col justify-center">
+                <span className="text-sm font-bold text-meshBlack">Home</span>
+              </span>
               <span className="flex flex-col justify-center">
                 <ChevronRight fill="#BDBDBD" />
               </span>
-              <span className="text-sm text-secondaryGrey font-bold">Shop</span>
+              <span className="flex flex-col justify-center">
+                <span className="text-sm text-secondaryGrey font-bold">
+                  Shop
+                </span>
+              </span>
             </div>
           </div>
 
-          <div className="w-full flex lg:flex-row md:flex-row flex-col mb-10 gap-8 lg:px-0 px-4">
+          <div className="w-full flex lg:flex-row md:flex-row flex-col lg:h-[594px] gap-8 lg:px-0 px-4">
             <Card
-              className="lg:w-2/4 w-full lg:h-[450px] h-[277px] shadow-lg flex flex-col"
+              className="lg:w-2/4 w-full lg:h-[450px] h-[277px] flex flex-col"
               placeholder={null}
             >
               <Carousel
@@ -68,7 +68,7 @@ const ProductCarouselView: React.FC = () => {
               </Carousel>
             </Card>
 
-            <div className="lg:w-2/4 flex w-full flex-col p-2 gap-8">
+            <div className="lg:w-2/4 flex w-full flex-col p-2 lg:h-[450px] gap-8">
               <div className="w-full flex-col lg:h-3/5 md:h-3/5 flex gap-4 border-b-2">
                 <p className="text-xl text-meshBlack">{product?.title}</p>
                 <span className="flex w-full gap-3">

@@ -10,6 +10,7 @@ import { SET_SINGLE_PRODUCT } from "@/reducers/productsDataSlice";
 import Loader from "@/components/Loader";
 import Products from "@/components/Products";
 import Footer from "@/components/Footer";
+import ProductDescriptionView from "./productModules/ProductDescriptionView";
 
 export default function ProductPage() {
   const params = useParams<{ slug: string }>();
@@ -36,6 +37,9 @@ export default function ProductPage() {
           <>
             <div className="lg:px-48 px-2 flex flex-col bg-lightGray gap-3">
               <ProductCarouselView />
+            </div>
+            <div className="bg-white lg:flex md:flex lg:px-48 flex-col hidden">
+              <ProductDescriptionView />
             </div>
             <div className="bg-lightGray lg:flex md:flex hidden">
               <Products productDetailsPage={true} />
