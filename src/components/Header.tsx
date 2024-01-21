@@ -27,6 +27,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
   // productDetailsPage prop is true if user is viewing from product details page
+  // If productDetailsPage props is true, format styles and contents.
 
   const [openNav, setOpenNav] = useState<boolean>(false);
 
@@ -111,6 +112,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
     </ul>
   );
 
+  // Collapsed navigation links ONLY on mobile devices
   const collapsedNavList = (
     <ul className="mt-10 flex flex-col lg:hidden md:hidden gap-5">
       <div className="flex w-full justify-center p-2">
@@ -158,7 +160,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
       <div className="h-max w-full fixed bg-white" style={{ zIndex: 9999 }}>
         <div
           className={`bg-armyGreen ${
-            productDetailsPage ? "lg:px-48 md:px-48" : "lg:px-8"
+            productDetailsPage ? "lg:px-48 md:px-48" : "lg:px-8 md:px-8"
           } px-2 py-4 lg:flex md:flex hidden gap-10 justify-between`}
         >
           <div className="flex gap-6">
