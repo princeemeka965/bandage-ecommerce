@@ -19,7 +19,7 @@ export default function Home() {
         <Testimonials />
       </div>
       <CallToAction />
-      <Footer />
+      <Footer productDetailsPage={false} />
     </>
   );
 }

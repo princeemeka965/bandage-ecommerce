@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { SET_SINGLE_PRODUCT } from "@/reducers/productsDataSlice";
 import Loader from "@/components/Loader";
 import Products from "@/components/Products";
+import Footer from "@/components/Footer";
 
 export default function ProductPage() {
   const params = useParams<{ slug: string }>();
@@ -39,6 +40,7 @@ export default function ProductPage() {
             <div className="bg-lightGray lg:flex md:flex hidden">
               <Products productDetailsPage={true} />
             </div>
+            <Footer productDetailsPage={true} />
           </>
         )}
       </div>

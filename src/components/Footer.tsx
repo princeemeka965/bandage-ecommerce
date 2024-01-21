@@ -12,7 +12,16 @@ interface ListsProp {
   lists: String[];
 }
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  productDetailsPage: boolean;
+}
+
+const Footer: React.FC<FooterProps> = ({ productDetailsPage }) => {
+  /**
+   * productDetailsPage prop is true if user is viewing from product details page
+   * Here we apply some styling to the footer in respect to productDetailsPage prop value
+   */
+
   const childrenLists: String[] = [
     "About Us",
     "Carrier",
@@ -55,8 +64,12 @@ const Footer: React.FC = () => {
 
   return (
     <>
-      <div className="flex w-full flex-col bg-lightGray">
-        <div className="w-full lg:px-48 md:px-48 lg:py-10 md:py-10 px-8 py-10 flex flex-col lg:flex-row md: flex-row gap-4 justify-between">
+      <div
+        className={`flex w-full flex-col ${
+          productDetailsPage ? "bg-white" : "bg-lightGray"
+        }`}
+      >
+        <div className="w-full lg:px-48 md:px-48 lg:py-10 md:py-10 px-8 py-10 flex flex-col lg:flex-row md:flex-row gap-4 justify-between">
           <span className="text-2xl font-bold text-meshBlack">Bandage</span>
           <span className="flex flex-col justify-center">
             <span className="flex gap-3">
@@ -66,6 +79,11 @@ const Footer: React.FC = () => {
             </span>
           </span>
         </div>
+        {productDetailsPage ? (
+          <div className="lg:px-48 md:px-48 px-8 lg:flex flex-col md:flex hidden">
+            <hr />
+          </div>
+        ) : null}
         <div className="w-full lg:px-48 md:px-48 lg:py-10 md:py-10 px-8 py-10 flex flex-col lg:flex-row md: flex-row lg:gap-1 gap-7 justify-between bg-white">
           {footerLists.map((footerList, index) => (
             <div

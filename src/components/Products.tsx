@@ -14,9 +14,8 @@ interface ProductsProps {
 }
 
 const Products: React.FC<ProductsProps> = ({ productDetailsPage }) => {
-  // productDetailsPage prop is true if user is viewing from product details page not the home page
-
   /**
+   * productDetailsPage prop is true if user is viewing from product details page
    * If productDetailsPage prop is true,
    * we hide the Load More Products button, here by disabling pagination.
    * we also change display of contents and make style changes
