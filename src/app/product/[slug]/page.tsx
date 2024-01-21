@@ -3,7 +3,7 @@
 import { useParams } from "next/navigation";
 import { useGetSingleProductListingQuery } from "@/services";
 import Header from "@/components/Header";
-import ProductCarouselView from "../productModules/ProductCarouselView";
+import ProductCarouselView from "./productModules/ProductCarouselView";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { SET_SINGLE_PRODUCT } from "@/reducers/productsDataSlice";
