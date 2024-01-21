@@ -20,4 +20,23 @@ export const productsApi = createApi({
   }),
 });
 
+export const singleProductApi = createApi({
+  reducerPath: "singleProductApi",
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://dummyjson.com",
+  }),
+  endpoints: (builder: any) => ({
+    getSingleProductListing: builder.query({
+      query: (arg: any) => {
+        const { id } = arg;
+        return {
+          url: `products/${id}`,
+        };
+      },
+    }),
+  }),
+});
+
 export const { useGetProductsListingQuery } = productsApi;
+
+export const { useGetSingleProductListingQuery } = singleProductApi;

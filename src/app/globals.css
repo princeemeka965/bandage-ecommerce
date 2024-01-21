@@ -54,6 +54,125 @@ body {
   }
 }
 
+.bg-successGreen {
+  background-color: #2dc071;
+}
+
+.bg-alertOrange {
+  background-color: #e77c40;
+}
+
+.bg-black {
+  background-color: #000000 !important;
+}
+
+.-mt-70 {
+  margin-top: -70px;
+}
+
 .text-yellow-700 {
   color: #f3cd03 !important;
+}
+
+.overflow-x-hidden {
+  overflow-x: hidden;
+}
+
+.inline-block {
+  display: inline-block !important;
+}
+
+.flex-none {
+  flex: none !important;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-2\/4 {
+  top: 50%; /* Moves the element 50% down from the top */
+}
+
+.left-4 {
+  left: 1rem; /* Adjust the value based on your design needs */
+}
+
+.-translate-y-2\/4 {
+  transform: translateY(
+    -50%
+  ); /* Moves the element up by 50% of its own height */
+}
+
+.rounded-full {
+  border-radius: 9999px; /* Creates a circular shape with a very large radius */
+}
+
+.select-none {
+  user-select: none; /* Prevents text selection in the element */
+}
+
+.transition-all {
+  transition-property: all;
+  transition-duration: 300ms; /* Adjust the duration based on your design needs */
+  transition-timing-function: ease; /* Adjust the timing function if needed */
+  transition-delay: 0s; /* Adjust the delay if needed */
+}
+
+.disabled\:shadow-none {
+  box-shadow: none; /* Removes box shadow when the element is disabled */
+}
+
+.w-12 {
+  width: 3rem; /* Adjust the width based on your design needs */
+}
+
+.max-w-48px {
+  max-width: 48px; /* Sets the maximum width of the element */
+}
+
+.h-12 {
+  height: 3rem; /* Adjust the height based on your design needs */
+}
+
+.max-h-48px {
+  max-height: 48px; /* Sets the maximum height of the element */
+}
+
+.text-white {
+  color: #fff; /* Sets the text color to white */
+}
+
+.hover\:bg-white\/10:hover {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.1
+  ); /* Sets the background color on hover with 10% opacity */
+}
+
+.active\:bg-white\/30:active {
+  background-color: rgba(
+    255,
+    255,
+    255,
+    255
+  ); /* Sets the background color on active state with 30% opacity */
+}
+
+.grid {
+  display: grid; /* Uses grid layout */
+}
+
+.place-items-center {
+  place-items: center; /* Aligns items to the center in both axes */
+}
+
+.right-4 {
+  right: 1rem; /* Adjust the value based on your design needs */
+}
+
+.cursor-pointer {
+  cursor: pointer;
 }

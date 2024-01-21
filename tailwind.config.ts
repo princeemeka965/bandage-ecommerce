@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  mode: "jit",
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -18,6 +19,9 @@ const config: Config = {
         dangerRed: "#E74040",
         disabledBlue: "#8EC2F2",
         lightGray: "#FAFAFA",
+        overlayDark: "rgba(0,0,0,0.8)",
+        darkGrey: "#858585",
+        alertOrange: "#E77C40",
       },
     },
   },

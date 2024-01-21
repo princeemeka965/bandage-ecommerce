@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <Header productDetailsPage={false} />
-      <div className="lg:px-14 px-2 py-2 flex flex-col mt-28">
+      <div className="lg:px-14 px-2 py-2 flex flex-col mt-16 lg:mt-28">
         <GalleryView />
         <Products />
         <ServicesView />

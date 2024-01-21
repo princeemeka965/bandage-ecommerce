@@ -5,6 +5,7 @@ import {
   AvatarXs,
   CaretBlack,
   CartIconLg,
+  CartIconMd,
   CartIconXs,
   CollapseIcon,
   FacebookIcon,
@@ -133,13 +134,15 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
             <span className="flex flex-col justify-center">
               <AvatarXs />
             </span>
-            <span className="text-2xl text-primaryBlue">Login / Register</span>
+            <span className="text-2xl text-primaryBlue font-normal">
+              Login / Register
+            </span>
           </div>
           <div className="flex w-full justify-center gap-2 p-2">
             <SearchIconXs fill="#23A6F0" />
           </div>
           <div className="flex w-full justify-center gap-2 p-2">
-            <CartIconXs fill="#23A6F0" />
+            <CartIconMd fill="#23A6F0" />
             <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
               1
             </span>
@@ -157,7 +160,10 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
 
   return (
     <>
-      <div className="h-max w-full fixed bg-white" style={{ zIndex: 9999 }}>
+      <div
+        className="h-max w-full fixed bg-white lg:-mt-28 -mt-70"
+        style={{ zIndex: 9999 }}
+      >
         <div
           className={`bg-armyGreen ${
             productDetailsPage ? "lg:px-48 md:px-48" : "lg:px-8 md:px-8"
