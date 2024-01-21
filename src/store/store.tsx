@@ -1,10 +1,22 @@
 import productsDataSlice from "@/reducers/productsDataSlice";
 import { productsApi, singleProductApi } from "@/services";
 import { configureStore } from "@reduxjs/toolkit";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "./storage";
 
-const store: any = configureStore({
+const persistConfig = {
+  key: "root",
+  storage: storage,
+};
+
+const persistedProductsDataReducer = persistReducer(
+  persistConfig,
+  productsDataSlice
+);
+
+export const store: any = configureStore({
   reducer: {
-    productsData: productsDataSlice,
+    productsData: persistedProductsDataReducer,
     [productsApi.reducerPath]: productsApi.reducer,
     [singleProductApi.reducerPath]: singleProductApi.reducer,
   },
@@ -15,4 +27,4 @@ const store: any = configureStore({
 });
 
 export type RootState = ReturnType<typeof store.getState>;
-export default store;
+export const persistor = persistStore(store);

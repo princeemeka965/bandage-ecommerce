@@ -23,7 +23,7 @@ export default function Home() {
       <Footer productDetailsPage={false} />
 
       <ToastContainer
-        position="top-right"
+        position="bottom-right"
         autoClose={5000}
         hideProgressBar
         newestOnTop={false}

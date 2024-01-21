@@ -3,7 +3,8 @@
 import { Montserrat } from "next/font/google";
 import { Provider } from "react-redux";
 import "./globals.css";
-import store from "@/store";
+import { persistor, store } from "@/store/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 const inter = Montserrat({ subsets: ["latin"] });
 
@@ -21,7 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <title>{metadata.title}</title>
       <body className={inter.className}>
-        <Provider store={store}>{children}</Provider>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            {children}
+          </PersistGate>
+        </Provider>
       </body>
     </html>
   );
