@@ -51,7 +51,7 @@ const ProductsList: React.FC<ProductsListProp> = ({ products }) => {
               <span className="text-base font-bold text-center whitespace-nowrap overflow-ellipsis overflow-hidden text-meshBlack">
                 {product?.title}
               </span>
-              <span className="text-sm font-bold flex justify-center text-center text-secondaryGrey">
+              <span className="text-sm font-bold text-center whitespace-nowrap overflow-ellipsis overflow-hidden text-secondaryGrey">
                 {product?.brand}
               </span>
               <span className="text-base font-bold flex justify-center gap-2">

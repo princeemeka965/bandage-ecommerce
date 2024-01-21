@@ -39,7 +39,7 @@ const ProductDescriptionView: React.FC = () => {
           </div>
           <div className="flex w-1/2 max-h-[372px]">
             <Image
-              src={product?.images[0]}
+              src={product?.images[0] || ""}
               alt="productImage"
               width={2000}
               height={2000}

@@ -62,7 +62,7 @@ const ProductCarouselView: React.FC = () => {
                     alt="image 1"
                     width={2000}
                     height={2000}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-contain"
                   />
                 ))}
               </Carousel>

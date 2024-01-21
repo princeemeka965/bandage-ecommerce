@@ -11,6 +11,7 @@ import Loader from "@/components/Loader";
 import Products from "@/components/Products";
 import Footer from "@/components/Footer";
 import ProductDescriptionView from "./productModules/ProductDescriptionView";
+import BrandsView from "./productModules/BrandsView";
 
 export default function ProductPage() {
   const params = useParams<{ slug: string }>();
@@ -41,8 +42,9 @@ export default function ProductPage() {
             <div className="bg-white lg:flex md:flex lg:px-48 flex-col hidden">
               <ProductDescriptionView />
             </div>
-            <div className="bg-lightGray lg:flex md:flex hidden">
+            <div className="bg-lightGray lg:flex md:flex flex-col hidden">
               <Products productDetailsPage={true} />
+              <BrandsView />
             </div>
             <Footer productDetailsPage={true} />
           </>
