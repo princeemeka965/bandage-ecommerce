@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { SET_PRODUCTS } from "@/reducers/productsDataSlice";
 import Loader from "@/components/Loader";
-import { RootState } from "@/store";
+import { RootState } from "@/store/store";
 import ProductsList from "./ProductsList";
 import { Button } from "@material-tailwind/react";
 

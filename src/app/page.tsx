@@ -1,7 +1,8 @@
+"use client";
+
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Products from "@/components/Products";
-import { ToastContainer } from "react-toastify";
 import BlogPosts from "./modules/homeModules/BlogPosts";
 import CallToAction from "./modules/homeModules/CallToAction";
 import GalleryView from "./modules/homeModules/GalleryView";
@@ -21,19 +22,6 @@ export default function Home() {
       </div>
       <CallToAction />
       <Footer productDetailsPage={false} />
-
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="colored"
-      />
     </>
   );
 }

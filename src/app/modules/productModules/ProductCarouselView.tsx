@@ -1,15 +1,46 @@
 "use client";
+import { useCheckCartList } from "@/app/customHooks/cartHooks";
 import RoundCircles from "@/app/modules/productModules/RoundCircles";
 import { CartIconLg, ChevronRight, EyeIcon, WishIcon } from "@/icons";
-import { RootState } from "@/store";
+import {
+  SET_CART_PRODUCTS,
+  SET_WISHLIST_PRODUCTS,
+} from "@/reducers/productsDataSlice";
+import { RootState } from "@/store/store";
 import { Button, Card, Carousel, Rating } from "@material-tailwind/react";
 import Image from "next/image";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const ProductCarouselView: React.FC = () => {
   const product = useSelector(
     (state: RootState) => state.productsData.singleProduct
   );
+
+  const dispatch = useDispatch();
+  const [isExist] = useCheckCartList(product?.id);
+
+  const wishListProducts = useSelector(
+    (state: RootState) => state.productsData.wishListProducts
+  );
+
+  const cartProducts = useSelector(
+    (state: RootState) => state.productsData.cartProducts
+  );
+
+  const addToWishList = () => {
+    const products = [...wishListProducts, product];
+    dispatch(SET_WISHLIST_PRODUCTS(products));
+    toast.success("Product added to wishlist", { autoClose: 3000 });
+  };
+
+  const addToCart = () => {
+    const products = [...cartProducts, product];
+    dispatch(SET_CART_PRODUCTS(products));
+    toast.success("Product added to cart", { autoClose: 3000 });
+  };
+
+  console.log(isExist);
 
   return (
     <>
@@ -128,14 +159,16 @@ const ProductCarouselView: React.FC = () => {
                     </span>
                   </Button>
                   <Card
-                    className="w-[40px] h-[40px] p-2 rounded-full flex items-center justify-center"
+                    className="w-[40px] h-[40px] p-2 rounded-full cursor-pointer flex items-center justify-center"
                     placeholder={null}
+                    onClick={() => addToWishList()}
                   >
                     <WishIcon fill="#252B42" />
                   </Card>
                   <Card
-                    className="w-[40px] h-[40px] p-2 rounded-full flex items-center justify-center"
+                    className="w-[40px] h-[40px] p-2 rounded-full cursor-pointer flex items-center justify-center"
                     placeholder={null}
+                    onClick={() => addToCart()}
                   >
                     <CartIconLg fill="#252B42" />
                   </Card>

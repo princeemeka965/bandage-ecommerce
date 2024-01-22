@@ -19,8 +19,10 @@ import {
   WishIconXs,
   YouTubeIcon,
 } from "@/icons";
+import { RootState } from "@/store/store";
 import { Navbar, IconButton, Collapse } from "@material-tailwind/react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 interface HeaderProps {
   productDetailsPage: boolean;
@@ -31,6 +33,14 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
   // If productDetailsPage props is true, format styles and contents.
 
   const [openNav, setOpenNav] = useState<boolean>(false);
+
+  const cartProducts = useSelector(
+    (state: RootState) => state.productsData.cartProducts
+  );
+
+  const wishProducts = useSelector(
+    (state: RootState) => state.productsData.wishListProducts
+  );
 
   const navPageLists = (
     <>
@@ -72,13 +82,13 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
         <CartIconXs className="lg:hidden md:hidden" />
         <CartIconLg className="lg:block md:block hidden" />
         <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-          1
+          {cartProducts.length}
         </span>
       </div>
       <div className="lg:flex md:flex hidden gap-1">
         <WishIcon />
         <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-          1
+          {wishProducts.length}
         </span>
       </div>
       <div className="flex lg:hidden md:hidden">
@@ -113,7 +123,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
     </ul>
   );
 
-  // Collapsed navigation links ONLY on mobile devices
+  // Collapsed navigation links, ONLY on mobile devices
   const collapsedNavList = (
     <ul className="mt-10 flex flex-col lg:hidden md:hidden gap-5">
       <div className="flex w-full justify-center p-2">
@@ -144,13 +154,13 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
           <div className="flex w-full justify-center gap-2 p-2">
             <CartIconMd fill="#23A6F0" />
             <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-              1
+              {cartProducts.length}
             </span>
           </div>
           <div className="flex w-full justify-center gap-2 p-2">
             <WishIconXs />
             <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-              1
+              {wishProducts.length}
             </span>
           </div>
         </>

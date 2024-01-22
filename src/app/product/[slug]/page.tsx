@@ -1,5 +1,7 @@
 "use client";
 
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useParams } from "next/navigation";
 import { useGetSingleProductListingQuery } from "@/services";
 import Header from "@/components/Header";
@@ -50,6 +52,19 @@ export default function ProductPage() {
           </>
         )}
       </div>
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 }
