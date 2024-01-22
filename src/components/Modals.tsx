@@ -35,7 +35,7 @@ export default function Modals(props: any): ReactNode {
           <Card
             placeholder={null}
             shadow={false}
-            className="fixed z-50 lg:min-w-[57%] w-[93%] -mt-4 px-2 py-4"
+            className="fixed z-50 lg:w-[57%] w-[93%] -mt-4 px-2 py-4"
           >
             <div className="flex flex-row justify-between">
               <Typography variant="h5" color="blue-gray">

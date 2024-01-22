@@ -68,6 +68,8 @@ export default function ProductPage({ searchParams }: SearchParamProps) {
               </div>
               <div className="bg-lightGray lg:flex md:flex flex-col hidden">
                 <Products productDetailsPage={true} />
+              </div>
+              <div className="bg-lightGray lg:flex md:flex flex-col flex">
                 <BrandsView />
               </div>
               <Footer productDetailsPage={true} />

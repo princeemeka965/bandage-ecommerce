@@ -12,16 +12,21 @@ const BrandsView: React.FC = () => {
 
   return (
     <>
-      <div className="lg:px-48 flex gap-6 lg:py-12 justify-between">
+      <div className="lg:px-48 flex lg:gap-6 md:gap-6 gap-14 lg:pt-2 lg:pb-12 lg:flex-row md:flex-row flex-col py-28 lg:justify-between">
         {brands.map((brand: string, index: number) => (
-          <div className="flex" key={index}>
-            <Image
-              src={brand}
-              alt="productImage"
-              width={103}
-              height={34}
-              className="w-full h-full object-contain"
-            />
+          <div
+            className="flex w-full lg:w-max items-center justify-center"
+            key={index}
+          >
+            <div className="lg:w-max w-[139px]">
+              <Image
+                src={brand}
+                alt="productImage"
+                width={103}
+                height={34}
+                className="w-full h-full object-contain"
+              />
+            </div>
           </div>
         ))}
       </div>
