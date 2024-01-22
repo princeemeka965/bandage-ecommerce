@@ -1,8 +1,8 @@
 import { RootState } from "@/store/store";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
-export function useCheckCartList(id: number) {
+export function useCheckCartList(id: number): [boolean, () => void] {
   const [value, setValue] = useState<boolean>(false);
   const cartLists = useSelector(
     (state: RootState) => state.productsData.cartProducts
@@ -13,14 +13,16 @@ export function useCheckCartList(id: number) {
       (obj: { id: number }) => obj.id === id
     );
 
-    console.log(productExists);
-
     if (productExists) {
       setValue(true);
     } else {
       setValue(false);
     }
   };
+
+  useEffect(() => {
+    checkList(); // Call checkList when the component mounts or when id changes
+  }, [id, cartLists]); // Include id and cartLists as dependencies
 
   return [value, checkList];
 }

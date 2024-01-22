@@ -1,5 +1,6 @@
 "use client";
 import { useCheckCartList } from "@/app/customHooks/cartHooks";
+import { useCheckWishList } from "@/app/customHooks/wishListHooks";
 import RoundCircles from "@/app/modules/productModules/RoundCircles";
 import { CartIconLg, ChevronRight, EyeIcon, WishIcon } from "@/icons";
 import {
@@ -18,29 +19,35 @@ const ProductCarouselView: React.FC = () => {
   );
 
   const dispatch = useDispatch();
-  const [isExist] = useCheckCartList(product?.id);
+  const [cartExist] = useCheckCartList(product?.id);
+  const [wishListExist] = useCheckWishList(product?.id);
 
+  // if cartExist is true, disable click action for addToCart on this Product
+  // if wishListExist is true, disable click action for addToWishList on this Product
+
+  // Here we get all the products added to the wishListProducts array
   const wishListProducts = useSelector(
     (state: RootState) => state.productsData.wishListProducts
   );
 
+  // Here we get all the products added to the cartProducts array
   const cartProducts = useSelector(
     (state: RootState) => state.productsData.cartProducts
   );
 
+  // Here we add the product to the wishList
   const addToWishList = () => {
     const products = [...wishListProducts, product];
     dispatch(SET_WISHLIST_PRODUCTS(products));
     toast.success("Product added to wishlist", { autoClose: 3000 });
   };
 
+  // Here we add the product to the cart
   const addToCart = () => {
     const products = [...cartProducts, product];
     dispatch(SET_CART_PRODUCTS(products));
     toast.success("Product added to cart", { autoClose: 3000 });
   };
-
-  console.log(isExist);
 
   return (
     <>
@@ -159,16 +166,20 @@ const ProductCarouselView: React.FC = () => {
                     </span>
                   </Button>
                   <Card
-                    className="w-[40px] h-[40px] p-2 rounded-full cursor-pointer flex items-center justify-center"
+                    className={`w-[40px] h-[40px] p-2 rounded-full ${
+                      wishListExist ? "cursor-not-allowed" : "cursor-pointer"
+                    } flex items-center justify-center`}
                     placeholder={null}
-                    onClick={() => addToWishList()}
+                    onClick={() => (wishListExist ? () => {} : addToWishList())}
                   >
                     <WishIcon fill="#252B42" />
                   </Card>
                   <Card
-                    className="w-[40px] h-[40px] p-2 rounded-full cursor-pointer flex items-center justify-center"
+                    className={`w-[40px] h-[40px] p-2 rounded-full ${
+                      cartExist ? "cursor-not-allowed" : "cursor-pointer"
+                    } flex items-center justify-center`}
                     placeholder={null}
-                    onClick={() => addToCart()}
+                    onClick={() => (cartExist ? () => {} : addToCart())}
                   >
                     <CartIconLg fill="#252B42" />
                   </Card>
