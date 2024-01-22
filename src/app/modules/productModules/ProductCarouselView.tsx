@@ -150,7 +150,7 @@ const ProductCarouselView: React.FC = () => {
                       { bgColor: "primaryBlue" },
                       { bgColor: "successGreen" },
                       { bgColor: "alertOrange" },
-                      { bgColor: "black" },
+                      { bgColor: "blackDark" },
                     ]}
                   />
                 </div>

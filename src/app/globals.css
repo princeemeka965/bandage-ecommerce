@@ -62,12 +62,24 @@ body {
   background-color: #e77c40;
 }
 
-.bg-black {
-  background-color: #000000 !important;
-}
-
 .-mt-70 {
   margin-top: -70px;
+}
+
+.w-screen {
+  width: 100vw;
+}
+
+.h-screen {
+  height: 100vh;
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.bg-black {
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .text-yellow-700 {

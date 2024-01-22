@@ -14,8 +14,14 @@ import Products from "@/components/Products";
 import Footer from "@/components/Footer";
 import ProductDescriptionView from "../../modules/productModules/ProductDescriptionView";
 import BrandsView from "../../modules/productModules/BrandsView";
+import CartList from "@/components/CartLists";
+import WishList from "@/components/WishLists";
 
-export default function ProductPage() {
+type SearchParamProps = {
+  searchParams: Record<string, string> | null | undefined;
+};
+
+export default function ProductPage({ searchParams }: SearchParamProps) {
   const params = useParams<{ slug: string }>();
 
   const { data, error, isLoading } = useGetSingleProductListingQuery<any>({
@@ -27,6 +33,9 @@ export default function ProductPage() {
   useEffect(() => {
     dispatch(SET_SINGLE_PRODUCT(data));
   }, [data, dispatch]);
+
+  const cart = searchParams?.cart;
+  const wishList = searchParams?.wishlist;
 
   return (
     <>
@@ -52,6 +61,9 @@ export default function ProductPage() {
           </>
         )}
       </div>
+
+      {cart ? <CartList /> : null}
+      {wishList ? <WishList /> : null}
 
       <ToastContainer
         position="bottom-right"

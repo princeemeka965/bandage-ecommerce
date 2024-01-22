@@ -22,6 +22,7 @@ const config: Config = {
         overlayDark: "rgba(0,0,0,0.8)",
         darkGrey: "#858585",
         alertOrange: "#E77C40",
+        blackDark: "#000000",
       },
     },
   },

@@ -21,6 +21,8 @@ import {
 } from "@/icons";
 import { RootState } from "@/store/store";
 import { Navbar, IconButton, Collapse } from "@material-tailwind/react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 
@@ -41,6 +43,13 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
   const wishProducts = useSelector(
     (state: RootState) => state.productsData.wishListProducts
   );
+
+  /**
+   * Here we use the usePathname hook to get current URL
+   * This would be helpful when displaying our MODALS
+   */
+
+  const pathname = usePathname();
 
   const navPageLists = (
     <>
@@ -75,21 +84,25 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
         <SearchIconLg className="lg:block md:block hidden" />
       </div>
       <div
-        className={`lg:flex md:flex gap-1 ${
+        className={`lg:flex md:flex gap-1 cursor-pointer ${
           productDetailsPage ? "hidden" : "flex"
         }`}
       >
-        <CartIconXs className="lg:hidden md:hidden" />
-        <CartIconLg className="lg:block md:block hidden" />
-        <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-          {cartProducts.length}
-        </span>
+        <Link href={`${pathname}/?cart=true`} className="flex gap-1">
+          <CartIconXs className="lg:hidden md:hidden" />
+          <CartIconLg className="lg:block md:block hidden" />
+          <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
+            {cartProducts.length}
+          </span>
+        </Link>
       </div>
       <div className="lg:flex md:flex hidden gap-1">
-        <WishIcon />
-        <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-          {wishProducts.length}
-        </span>
+        <Link href={`${pathname}/?wishlist=true`} className="flex gap-1">
+          <WishIcon />
+          <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
+            {wishProducts.length}
+          </span>
+        </Link>
       </div>
       <div className="flex lg:hidden md:hidden">
         <IconButton
@@ -170,10 +183,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
 
   return (
     <>
-      <div
-        className="h-max w-full fixed bg-white lg:-mt-28 -mt-70"
-        style={{ zIndex: 9999 }}
-      >
+      <div className="h-max w-full fixed bg-white" style={{ zIndex: 9999 }}>
         <div
           className={`bg-armyGreen ${
             productDetailsPage ? "lg:px-48 md:px-48" : "lg:px-8 md:px-8"
