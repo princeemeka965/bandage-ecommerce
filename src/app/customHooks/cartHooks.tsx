@@ -1,6 +1,6 @@
 import { RootState } from "@/store/store";
 import { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export function useCheckCartList(id: number): [boolean, () => void] {
   const [value, setValue] = useState<boolean>(false);

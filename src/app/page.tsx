@@ -45,9 +45,15 @@ export default function Home({ searchParams }: SearchParamProps) {
         <CallToAction />
         <Footer productDetailsPage={false} />
 
-        {cart ? <Modals title="Cart" products={cartProducts} /> : null}
+        {cart ? (
+          <Modals title="Cart" products={cartProducts} slug="cart" />
+        ) : null}
         {wishList ? (
-          <Modals title="Wish List" products={wishListProducts} />
+          <Modals
+            title="Wish List"
+            products={wishListProducts}
+            slug="wishlist"
+          />
         ) : null}
       </div>
     </>

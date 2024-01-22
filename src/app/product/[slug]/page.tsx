@@ -77,9 +77,15 @@ export default function ProductPage({ searchParams }: SearchParamProps) {
           )}
         </div>
 
-        {cart ? <Modals title="Cart" products={cartProducts} /> : null}
+        {cart ? (
+          <Modals title="Cart" products={cartProducts} slug="cart" />
+        ) : null}
         {wishList ? (
-          <Modals title="Wish List" products={wishListProducts} />
+          <Modals
+            title="Wish List"
+            products={wishListProducts}
+            slug="wishlist"
+          />
         ) : null}
       </div>
 
