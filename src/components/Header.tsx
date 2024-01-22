@@ -31,8 +31,11 @@ interface HeaderProps {
 }
 
 const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
-  // productDetailsPage prop is true if user is viewing from product details page
-  // If productDetailsPage props is true, format styles and contents.
+  /**
+   * productDetailsPage prop is true if user is viewing from product details page
+   * If productDetailsPage prop is true,
+   * we change display of contents and make style changes
+   */
 
   const [openNav, setOpenNav] = useState<boolean>(false);
 
@@ -51,6 +54,10 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
 
   const pathname = usePathname();
 
+  /**
+   * Here is NAVIGATION links for pages on site
+   * This is only visible in DESKTOPS/LAPTOPS
+   */
   const navPageLists = (
     <>
       <span className="text-sm text-secondaryGrey font-bold">Home</span>
@@ -67,8 +74,13 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
     </>
   );
 
+  /**
+   * NAVIGATION LINK FLOATED TO THE RIGHT SIDE OF THE HEADERS
+   * This contains the LOGIN, SEARCH, CART, WISH LIST & BURGER ICONS
+   * Works on both DESKTOP & MOBILE SCREENS
+   */
   const navRightList = (
-    <ul className="flex gap-6 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 md:gap-8">
+    <ul className="flex gap-5 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-8 md:gap-8">
       <div className="lg:flex md:flex gap-2 hidden">
         <span className="flex flex-col justify-center">
           <Avatar />
@@ -88,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
           productDetailsPage ? "hidden" : "flex"
         }`}
       >
-        <Link href={`${pathname}/?cart=true`} className="flex gap-1">
+        <Link href={`${pathname}/?cart=true`} className="flex">
           <CartIconXs className="lg:hidden md:hidden" />
           <CartIconLg className="lg:block md:block hidden" />
           <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
@@ -96,7 +108,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
           </span>
         </Link>
       </div>
-      <div className="lg:flex md:flex hidden gap-1">
+      <div className="lg:flex md:flex hidden">
         <Link href={`${pathname}/?wishlist=true`} className="flex gap-1">
           <WishIcon />
           <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
@@ -136,7 +148,11 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
     </ul>
   );
 
-  // Collapsed navigation links, ONLY on mobile devices
+  /**
+   * COLLAPSED NAVIGATION LINKS
+   * Here is NAVIGATION links for pages on site
+   * Works on ONLY Mbile Screens
+   */
   const collapsedNavList = (
     <ul className="mt-10 flex flex-col lg:hidden md:hidden gap-5">
       <div className="flex w-full justify-center p-2">
@@ -165,16 +181,20 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
             <SearchIconXs fill="#23A6F0" />
           </div>
           <div className="flex w-full justify-center gap-2 p-2">
-            <CartIconMd fill="#23A6F0" />
-            <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-              {cartProducts.length}
-            </span>
+            <Link href={`${pathname}/?cart=true`} className="flex gap-1">
+              <CartIconMd fill="#23A6F0" />
+              <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
+                {cartProducts.length}
+              </span>
+            </Link>
           </div>
           <div className="flex w-full justify-center gap-2 p-2">
-            <WishIconXs />
-            <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
-              {wishProducts.length}
-            </span>
+            <Link href={`${pathname}/?wishlist=true`} className="flex gap-1">
+              <WishIconXs />
+              <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
+                {wishProducts.length}
+              </span>
+            </Link>
           </div>
         </>
       ) : null}
@@ -248,9 +268,11 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
           >
             <div className="flex items-center justify-between">
               <div className="flex gap-28">
-                <span className="mr-4 cursor-pointer py-1.5 font-bold text-xl text-black">
-                  Bandage
-                </span>
+                <Link href={"/"} className="flex">
+                  <span className="mr-4 cursor-pointer py-1.5 font-bold text-xl text-black">
+                    Bandage
+                  </span>
+                </Link>
                 <div className="lg:flex md:flex hidden gap-6 items-center">
                   {navPageLists}
                 </div>
