@@ -1,5 +1,5 @@
 "use client";
-import { RootState } from "@/store/store";
+import { CloseIcon } from "@/icons";
 import {
   Button,
   Dialog,
@@ -12,15 +12,10 @@ import {
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { ReactNode, useState } from "react";
-import { useSelector } from "react-redux";
 
-export default function WishList(props: any): ReactNode {
+export default function Modals(props: any): ReactNode {
   const [open, setOpen] = useState<boolean>(true);
-  const handleOpen = () => setOpen(!open);
-
-  const wishListProducts = useSelector(
-    (state: RootState) => state.productsData.wishListProducts
-  );
+  const handleOpen = () => setOpen(true);
 
   const router = useRouter();
 
@@ -34,29 +29,40 @@ export default function WishList(props: any): ReactNode {
       >
         <DialogBody
           placeholder={null}
-          className="max-h-[80vh] rounded-none"
+          className="lg:max-h-[80vh] h-screen rounded-none"
           style={{ overflow: "auto" }}
         >
           <Card
             placeholder={null}
             shadow={false}
-            className="fixed z-50 min-w-[57%] -mt-4 px-2 py-4"
+            className="fixed z-50 lg:min-w-[57%] w-[93%] -mt-4 px-2 py-4"
           >
-            <Typography variant="h5" color="blue-gray">
-              Wish List ({wishListProducts.length})
-            </Typography>
+            <div className="flex flex-row justify-between">
+              <Typography variant="h5" color="blue-gray">
+                {props.title} ({props?.products.length})
+              </Typography>
+              <span
+                className="flex lg:hidden md:hidden cursor-pointer"
+                onClick={() => router.back()}
+              >
+                <CloseIcon />
+              </span>
+            </div>
             <hr className="my-2 flex flex-col gap-6 w-full" />
           </Card>{" "}
           <div className="flex w-full flex-col gap-6 mt-16">
-            {wishListProducts.map((product: any, index: string) => (
+            {props.products.map((product: any, index: string) => (
               <>
-                <div className="w-full flex flex-row gap-20 px-6" key={index}>
-                  <div className="w-1/5 h-full flex relative">
+                <div
+                  className="w-full flex lg:flex-row flex-col md:flex-row gap-20 px-6"
+                  key={index}
+                >
+                  <div className="lg:w-1/5 md:w-1/5 w-full h-full flex relative">
                     <Image
                       src={product?.thumbnail || ""}
                       width={400}
                       height={400}
-                      className="w-full object-contain"
+                      className="w-full h-full lg:object-contain object-cover"
                       alt="cart-product"
                     />
                   </div>
@@ -90,7 +96,9 @@ export default function WishList(props: any): ReactNode {
                         color="red"
                         className="flex justify-center bg-red-500"
                       >
-                        <span className="text-xs">Remove from WishList</span>
+                        <span className="text-xs">
+                          Remove from {props.title}
+                        </span>
                       </Button>
                     </div>
                   </div>

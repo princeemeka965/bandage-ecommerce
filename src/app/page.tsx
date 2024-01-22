@@ -8,8 +8,9 @@ import CallToAction from "./modules/homeModules/CallToAction";
 import GalleryView from "./modules/homeModules/GalleryView";
 import ServicesView from "./modules/homeModules/ServicesView";
 import Testimonials from "./modules/homeModules/Testimonials";
-import CartList from "@/components/CartLists";
-import WishList from "@/components/WishLists";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import Modals from "@/components/Modals";
 
 type SearchParamProps = {
   searchParams: Record<string, string> | null | undefined;
@@ -19,11 +20,22 @@ export default function Home({ searchParams }: SearchParamProps) {
   const cart = searchParams?.cart;
   const wishList = searchParams?.wishlist;
 
+  /**
+   * Here we get all Products in the Cart and Wishlist
+   */
+  const cartProducts = useSelector(
+    (state: RootState) => state.productsData.cartProducts
+  );
+
+  const wishListProducts = useSelector(
+    (state: RootState) => state.productsData.wishListProducts
+  );
+
   return (
     <>
       <div className="w-full h-full flex flex-col gap-1">
         <Header productDetailsPage={false} />
-        <div className="lg:px-14 px-2 py-2 flex flex-col mt-28">
+        <div className="lg:px-14 px-2 py-2 flex flex-col lg:mt-28 md:mt-28 mt-20">
           <GalleryView />
           <Products productDetailsPage={false} />
           <ServicesView />
@@ -33,8 +45,10 @@ export default function Home({ searchParams }: SearchParamProps) {
         <CallToAction />
         <Footer productDetailsPage={false} />
 
-        {cart ? <CartList /> : null}
-        {wishList ? <WishList /> : null}
+        {cart ? <Modals title="Cart" products={cartProducts} /> : null}
+        {wishList ? (
+          <Modals title="Wish List" products={wishListProducts} />
+        ) : null}
       </div>
     </>
   );

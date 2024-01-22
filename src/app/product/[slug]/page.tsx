@@ -14,8 +14,9 @@ import Products from "@/components/Products";
 import Footer from "@/components/Footer";
 import ProductDescriptionView from "../../modules/productModules/ProductDescriptionView";
 import BrandsView from "../../modules/productModules/BrandsView";
-import CartList from "@/components/CartLists";
-import WishList from "@/components/WishLists";
+import { useSelector } from "react-redux";
+import { RootState } from "@/store/store";
+import Modals from "@/components/Modals";
 
 type SearchParamProps = {
   searchParams: Record<string, string> | null | undefined;
@@ -37,33 +38,48 @@ export default function ProductPage({ searchParams }: SearchParamProps) {
   const cart = searchParams?.cart;
   const wishList = searchParams?.wishlist;
 
+  /**
+   * Here we get all Products in the Cart and Wishlist
+   */
+  const cartProducts = useSelector(
+    (state: RootState) => state.productsData.cartProducts
+  );
+
+  const wishListProducts = useSelector(
+    (state: RootState) => state.productsData.wishListProducts
+  );
+
   return (
     <>
-      <Header productDetailsPage={true} />
-      <div className="w-full flex flex-col mt-16 lg:mt-28">
-        {isLoading ? (
-          <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center text-center">
-            <Loader size="lg" />
-          </div>
-        ) : (
-          <>
-            <div className="lg:px-48 px-2 flex flex-col bg-lightGray gap-3">
-              <ProductCarouselView />
+      <div className="w-full h-full flex flex-col gap-1">
+        <Header productDetailsPage={true} />
+        <div className="w-full flex flex-col mt-16 lg:mt-28">
+          {isLoading ? (
+            <div className="absolute top-0 left-0 w-full h-full flex justify-center items-center text-center">
+              <Loader size="lg" />
             </div>
-            <div className="bg-white lg:flex md:flex lg:px-48 flex-col hidden">
-              <ProductDescriptionView />
-            </div>
-            <div className="bg-lightGray lg:flex md:flex flex-col hidden">
-              <Products productDetailsPage={true} />
-              <BrandsView />
-            </div>
-            <Footer productDetailsPage={true} />
-          </>
-        )}
-      </div>
+          ) : (
+            <>
+              <div className="lg:px-48 px-2 flex flex-col bg-lightGray gap-3">
+                <ProductCarouselView />
+              </div>
+              <div className="bg-white lg:flex md:flex lg:px-48 flex-col hidden">
+                <ProductDescriptionView />
+              </div>
+              <div className="bg-lightGray lg:flex md:flex flex-col hidden">
+                <Products productDetailsPage={true} />
+                <BrandsView />
+              </div>
+              <Footer productDetailsPage={true} />
+            </>
+          )}
+        </div>
 
-      {cart ? <CartList /> : null}
-      {wishList ? <WishList /> : null}
+        {cart ? <Modals title="Cart" products={cartProducts} /> : null}
+        {wishList ? (
+          <Modals title="Wish List" products={wishListProducts} />
+        ) : null}
+      </div>
 
       <ToastContainer
         position="bottom-right"
