@@ -11,14 +11,13 @@ import Testimonials from "./modules/homeModules/Testimonials";
 import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import Modals from "@/components/Modals";
+import { useSearchParams } from "next/navigation";
 
-type SearchParamProps = {
-  searchParams: Record<string, string> | null | undefined;
-};
+export default function Home() {
+  const searchParams = useSearchParams();
 
-export default function Home({ searchParams }: SearchParamProps) {
-  const cart = searchParams?.cart;
-  const wishList = searchParams?.wishlist;
+  const cart = searchParams.get("cart");
+  const wishList = searchParams.get("wishlist");
 
   /**
    * Here we get all Products in the Cart and Wishlist

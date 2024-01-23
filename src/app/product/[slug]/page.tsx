@@ -2,7 +2,7 @@
 
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useParams } from "next/navigation";
+import { useParams, useSearchParams } from "next/navigation";
 import { useGetSingleProductListingQuery } from "@/services";
 import Header from "@/components/Header";
 import ProductCarouselView from "../../modules/productModules/ProductCarouselView";
@@ -18,11 +18,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "@/store/store";
 import Modals from "@/components/Modals";
 
-type SearchParamProps = {
-  searchParams: Record<string, string> | null | undefined;
-};
-
-export default function ProductPage({ searchParams }: SearchParamProps) {
+export default function ProductPage() {
   const params = useParams<{ slug: string }>();
 
   const { data, error, isLoading } = useGetSingleProductListingQuery<any>({
@@ -35,8 +31,10 @@ export default function ProductPage({ searchParams }: SearchParamProps) {
     dispatch(SET_SINGLE_PRODUCT(data));
   }, [data, dispatch]);
 
-  const cart = searchParams?.cart;
-  const wishList = searchParams?.wishlist;
+  const searchParams = useSearchParams();
+
+  const cart = searchParams.get("cart");
+  const wishList = searchParams.get("wishlist");
 
   /**
    * Here we get all Products in the Cart and Wishlist

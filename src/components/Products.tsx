@@ -88,7 +88,7 @@ const Products: React.FC<ProductsProps> = ({ productDetailsPage }) => {
           </div>
         )}
 
-        <div className="w-full flex flex-row flex-wrap px-3 py-20 items-center gap-x-1 gap-y-10 justify-between">
+        <div className="w-full flex flex-row flex-wrap px-3 py-20 items-center gap-x-7 gap-y-10 justify-between">
           {isLoading ? (
             <Loader
               size="
