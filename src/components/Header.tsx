@@ -100,7 +100,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
           productDetailsPage ? "hidden" : "flex"
         }`}
       >
-        <Link href={`${pathname}/?cart=true`} className="flex">
+        <Link href={`${pathname}?cart=true`} className="flex">
           <CartIconXs className="lg:hidden md:hidden" />
           <CartIconLg className="lg:block md:block hidden" />
           <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
@@ -109,7 +109,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
         </Link>
       </div>
       <div className="lg:flex md:flex hidden">
-        <Link href={`${pathname}/?wishlist=true`} className="flex gap-1">
+        <Link href={`${pathname}?wishlist=true`} className="flex gap-1">
           <WishIcon />
           <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
             {wishProducts.length}
@@ -181,7 +181,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
             <SearchIconXs fill="#23A6F0" />
           </div>
           <div className="flex w-full justify-center gap-2 p-2">
-            <Link href={`${pathname}/?cart=true`} className="flex gap-1">
+            <Link href={`${pathname}?cart=true`} className="flex gap-1">
               <CartIconMd fill="#23A6F0" />
               <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
                 {cartProducts.length}
@@ -189,7 +189,7 @@ const Header: React.FC<HeaderProps> = ({ productDetailsPage }) => {
             </Link>
           </div>
           <div className="flex w-full justify-center gap-2 p-2">
-            <Link href={`${pathname}/?wishlist=true`} className="flex gap-1">
+            <Link href={`${pathname}?wishlist=true`} className="flex gap-1">
               <WishIconXs />
               <span className="flex flex-col text-xs justify-center font-semibold text-primaryBlue">
                 {wishProducts.length}
